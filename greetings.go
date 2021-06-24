@@ -1,8 +1,10 @@
 package greetings
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
+	"os"
 	"math/rand"
     "time"
 )
@@ -37,6 +39,17 @@ func Hellos(names []string) (map[string]string, error) {
         messages[name] = message
     }
     return messages, nil
+}
+
+func Welcome() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Enter your first name")
+	firstName, _ := reader.ReadString('\n')
+
+	fmt.Println("Thanks for that. Last name please!")
+	lastName, _ := reader.ReadString('\n')
+
+	fmt.Print(fmt.Sprintf("Your full name is %s", firstName + lastName))
 }
 
 // init sets initial values for variables used in the function.
